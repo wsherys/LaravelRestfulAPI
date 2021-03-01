@@ -23,13 +23,6 @@ class ArtikelPages extends Controller
 
     public function ListAjax(request $request)
 	{
-        
-       
-   
-        // Fetch records
-       
-        
-		// $list = $this->bank->get_datatables();
 		$list =DB::table('artikels')->get();
 		$data = array();
         $no = $request->get("start");
