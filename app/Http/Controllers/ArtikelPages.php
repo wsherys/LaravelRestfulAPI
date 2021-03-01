@@ -16,7 +16,7 @@ class ArtikelPages extends Controller
     {
         //
         $artikel = DB::table('artikels')->get();
-        $data=array('judul'=>'Artikel','urlajax'=>'/ListAjax', 'artikel' => $artikel);
+        $data=array('tbh'=>'','judul'=>'Article','urlajax'=>'/ListAjax', 'artikel' => $artikel);
         return view('child',$data);
         // dd($data);
     }
@@ -32,8 +32,11 @@ class ArtikelPages extends Controller
 			$row[] = $no;
 			$row[] = $dt->author;
 			$row[] = $dt->text;
-			$row[] = '<center><a href=/ArtikelPages/PageEdit/'.$id=$dt->id.'> edit</a> &nbsp; 
-					<a href=/ArtikelPages/Hapus/'.$id=$dt->id.'>hapus</a></center>';
+			$row[] = '<center>
+                    <a href=/ArtikelPages/PageDetail/'.$id=$dt->id.'> detail</a> &nbsp;
+                    <a href=/ArtikelPages/PageEdit/'.$id=$dt->id.'> edit</a> &nbsp; 
+					<a href=/ArtikelPages/Hapus/'.$id=$dt->id.'>hapus</a>
+                    </center>';
 
 			$data[] = $row;
 			
@@ -54,12 +57,57 @@ class ArtikelPages extends Controller
 		echo json_encode($output);
 	}
 
-    public function PageDetail()
+    public function PageTambah()
+    {
+        //
+        $data=array('judul'=>'Article');
+        return view('pagetambah',$data);
+        
+    }
+
+    public function Tambah(request $request)
+    {
+
+        //validasi
+        $rule=['author'=>'required','text'=>'required'];
+        $this->validate($request, $rule);
+        $input = $request->all();
+        unset($input['_token']);
+        $status= \DB::table('artikels')->insert($input);
+
+        if($status){ return redirect('/')->with('success','Data Berhasil Ditambahkan');}
+        else{ return redirect('/ArtikelPages/PageTambah')->with('error','Data Gagal Ditambahkan');}
+        // DB::table('artikels')->insert([
+        // 'author' => $request->author,
+        // 'text' => $request->artikel,
+        // ]);
+
+        // $artikel = DB::table('artikels')->get();
+        // $data=array('tbh'=>'1','judul'=>'Article','urlajax'=>'/ListAjax', 'artikel' => $artikel);
+        // return view('child',$data);
+        
+    }
+
+    public function PageDetail($id)
+    {
+        //
+        $data=array('judul'=>'Article');
+        return view('pagedetail',$data);
+    }
+
+    public function PageEdit($id)
+    {
+        //
+        $data=array('judul'=>'Article');
+        return view('pageedit',$data);
+    }
+
+    public function Update()
     {
         //
     }
 
-    public function PageEdit()
+    public function Hapus()
     {
         //
     }

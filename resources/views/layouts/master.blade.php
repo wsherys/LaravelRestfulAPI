@@ -22,20 +22,31 @@
         @section('tes')
        
         @show
-
         <div class="container">
             <div class="row">
                 <div class="col col-md-12">&nbsp;</div>
-                <div class="col col-md-12">
-                <h2>Page list artikel</h2>
-                <div class="col col-md-12">&nbsp;</div>
+                <div class="col col-md-11">&nbsp; <h5><b>Page list article</b></h5> </div>
+                <div class="col col-md-1">&nbsp;
+                    <a href="/ArtikelPages/PageTambah"> <input type="button" value="+ Tambah" class="btn btn-primary btn-sm"> </a>
+                </div>
+        
+                <div class="col col-md-12 ">&nbsp;
+                    @if(session('success'))
+                        <div class="alert alert-success"> {{session('success')}}</div>
+                    @endif
 
+                    @if(session('error'))
+                        <div class="alert alert-error"> {{session('error')}}</div>
+                    @endif
+                </div>
+
+                <div class="col col-md-12">
                 <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead>
                         <tr>
                             <th>No</th>
                             <th>Author</th>
-                            <th>Pengarang</th>
+                            <th>Article</th>
                             <th>&nbsp;</th>
                         </tr>
                     </thead>

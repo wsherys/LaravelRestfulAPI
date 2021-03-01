@@ -17,6 +17,15 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/','App\Http\Controllers\ArtikelPages@PageList');
-// Route::get('/ListAjax','App\Http\Controllers\ArtikelPages@ListAjax');
-Route::get('/ArtikelPages/ListAjax','App\Http\Controllers\ArtikelPages@ListAjax')->name('ArtikelPages.ListAjax');
+Route::get('/', 'App\Http\Controllers\ArtikelPages@PageList');
+Route::get('/ArtikelPages/ListAjax', 'App\Http\Controllers\ArtikelPages@ListAjax')->name('ArtikelPages.ListAjax');
+
+Route::get('/ArtikelPages/PageDetail', 'App\Http\Controllers\ArtikelPages@PageDetail');
+
+Route::get('/ArtikelPages/PageTambah', 'App\Http\Controllers\ArtikelPages@PageTambah');
+Route::post('/ArtikelPages/Tambah', 'App\Http\Controllers\ArtikelPages@Tambah');
+
+Route::get('/ArtikelPages/PageEdit', 'App\Http\Controllers\ArtikelPages@PageEdit');
+Route::get('/ArtikelPages/Update', 'App\Http\Controllers\ArtikelPages@Update');
+
+Route::get('/ArtikelPages/Hapus', 'App\Http\Controllers\ArtikelPages@Hapus');
