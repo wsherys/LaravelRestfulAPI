@@ -7,7 +7,8 @@ use Illuminate\Http\Response;
 use App\models\Artikel;
 
 use Illuminate\Support\Facades\View;
-use DB;
+// use DB;
+use Illuminate\Support\Facades\DB;
 
 class ArtikelPages extends Controller
 {
@@ -15,7 +16,7 @@ class ArtikelPages extends Controller
     public function PageList()
     {
         //
-        $artikel = DB::table('artikels')->get();
+        $artikel = DB::table('artikels') ->get();
         $data=array('tbh'=>'','judul'=>'Article','urlajax'=>'/ListAjax', 'artikel' => $artikel);
         return view('child',$data);
         // dd($data);
@@ -23,7 +24,9 @@ class ArtikelPages extends Controller
 
     public function ListAjax(request $request)
 	{
-		$list =DB::table('artikels')->get();
+		$list =DB::table('artikels')
+        ->orderByRaw('id DESC')
+        ->get();
 		$data = array();
         $no = $request->get("start");
 		foreach ($list as $dt) {
@@ -77,14 +80,6 @@ class ArtikelPages extends Controller
 
         if($status){ return redirect('/')->with('success','Data Berhasil Ditambahkan');}
         else{ return redirect('/ArtikelPages/PageTambah')->with('error','Data Gagal Ditambahkan');}
-        // DB::table('artikels')->insert([
-        // 'author' => $request->author,
-        // 'text' => $request->artikel,
-        // ]);
-
-        // $artikel = DB::table('artikels')->get();
-        // $data=array('tbh'=>'1','judul'=>'Article','urlajax'=>'/ListAjax', 'artikel' => $artikel);
-        // return view('child',$data);
         
     }
 
@@ -107,9 +102,11 @@ class ArtikelPages extends Controller
         //
     }
 
-    public function Hapus()
+    public function Hapus($id)
     {
         //
+        DB::table('artikels')->where('id',$id)->delete();
+        return redirect('/')->with('delete','Data Berhasil Dihapus');
     }
     
 }

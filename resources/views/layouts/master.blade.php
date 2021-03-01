@@ -31,6 +31,10 @@
                 </div>
         
                 <div class="col col-md-12 ">&nbsp;
+                    @if(session('delete'))
+                        <div class="alert alert-success"> {{session('delete')}}</div>
+                    @endif
+
                     @if(session('success'))
                         <div class="alert alert-success"> {{session('success')}}</div>
                     @endif
@@ -38,6 +42,8 @@
                     @if(session('error'))
                         <div class="alert alert-error"> {{session('error')}}</div>
                     @endif
+
+                    
                 </div>
 
                 <div class="col col-md-12">
