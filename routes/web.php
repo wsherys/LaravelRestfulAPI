@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/','App\Http\Controllers\ArtikelPages@PageList');
+// Route::get('/ListAjax','App\Http\Controllers\ArtikelPages@ListAjax');
+Route::get('/ArtikelPages/ListAjax','App\Http\Controllers\ArtikelPages@ListAjax')->name('ArtikelPages.ListAjax');
