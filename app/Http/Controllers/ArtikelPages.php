@@ -17,9 +17,8 @@ class ArtikelPages extends Controller
     {
         //
         $artikel = DB::table('artikels') ->get();
-        $data=array('tbh'=>'','judul'=>'Article','urlajax'=>'/ListAjax', 'artikel' => $artikel);
+        $data=array('tbh'=>'','judul'=>'Article', 'artikel' => $artikel);
         return view('child',$data);
-        // dd($data);
     }
 
     public function ListAjax(request $request)
@@ -35,11 +34,11 @@ class ArtikelPages extends Controller
 			$row[] = $no;
 			$row[] = $dt->author;
 			$row[] = $dt->text;
-			$row[] = '<center>
-                    <a href=/ArtikelPages/PageDetail/'.$id=$dt->id.'> detail</a> &nbsp;
-                    <a href=/ArtikelPages/PageEdit/'.$id=$dt->id.'> edit</a> &nbsp; 
-					<a href=/ArtikelPages/Hapus/'.$id=$dt->id.'>hapus</a>
-                    </center>';
+			$row[] = '  <center>
+                        <a href=/ArtikelPages/PageDetail/'.$id=$dt->id.' > detail</a> &nbsp;
+                        <a href=/ArtikelPages/PageEdit/'.$id=$dt->id.'> edit</a> &nbsp; 
+                        <a onclick="myFunction()" href=/ArtikelPages/Hapus/'.$id=$dt->id.'> hapus</a>
+                        </center>';
 
 			$data[] = $row;
 			
@@ -65,12 +64,10 @@ class ArtikelPages extends Controller
         //
         $data=array('judul'=>'Article');
         return view('pagetambah',$data);
-        
     }
 
     public function Tambah(request $request)
     {
-
         //validasi
         $rule=['author'=>'required','text'=>'required'];
         $this->validate($request, $rule);
@@ -86,27 +83,43 @@ class ArtikelPages extends Controller
     public function PageDetail($id)
     {
         //
-        $data=array('judul'=>'Article');
+        $artikel = DB::table('artikels')->where('id',$id)->get();
+        $data=array('judul'=>'Article', 'artikel'=>$artikel);
         return view('pagedetail',$data);
     }
 
     public function PageEdit($id)
     {
         //
-        $data=array('judul'=>'Article');
+        $artikel = DB::table('artikels')->where('id',$id)->get();
+        $data=array('judul'=>'Article', 'artikel'=>$artikel);
         return view('pageedit',$data);
     }
 
-    public function Update()
+    public function Update(Request $request)
     {
         //
+        $rule=['id'=>'required', 'author'=>'required','text'=>'required'];
+        $this->validate($request, $rule);
+        $input = $request->all();
+        unset($input['_token']);
+
+        DB::table('artikels')->where('id',$request->id)->update([
+        'id' => $request->id,
+        'author' => $request->author,
+        'text' => $request->text,
+        ]);
+
+        return redirect('/')->with('success','Data Berhasil Diupdate');
+       
     }
+   
 
     public function Hapus($id)
     {
         //
         DB::table('artikels')->where('id',$id)->delete();
-        return redirect('/')->with('delete','Data Berhasil Dihapus');
+        return redirect('/')->with('success','Data Berhasil Dihapus');
     }
     
 }

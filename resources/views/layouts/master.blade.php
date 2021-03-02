@@ -8,6 +8,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        
         <!-- Script -->
         <!-- Datatables CSS CDN -->
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
@@ -25,15 +26,12 @@
         <div class="container">
             <div class="row">
                 <div class="col col-md-12">&nbsp;</div>
-                <div class="col col-md-11">&nbsp; <h5><b>Page list article</b></h5> </div>
+                <div class="col col-md-11">&nbsp; <h2><b>Page list article</b></h2> </div>
                 <div class="col col-md-1">&nbsp;
                     <a href="/ArtikelPages/PageTambah"> <input type="button" value="+ Tambah" class="btn btn-primary btn-sm"> </a>
                 </div>
         
                 <div class="col col-md-12 ">&nbsp;
-                    @if(session('delete'))
-                        <div class="alert alert-success"> {{session('delete')}}</div>
-                    @endif
 
                     @if(session('success'))
                         <div class="alert alert-success"> {{session('success')}}</div>
@@ -62,7 +60,12 @@
                 </div>
             </div>
         </div>
-
+        <script>
+        function myFunction() {
+            if(!confirm("Apakah anda yakin ingin hapus?"))
+            event.preventDefault();
+        }
+        </script>
         @yield('ajax')
     </body>
 </html>

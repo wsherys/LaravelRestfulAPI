@@ -2,10 +2,9 @@
 
 @section('title', 'Test')
 
-@section('tes')
-&nbsp;
-@endsection
+
 @section('ajax')
+
 <script type="text/javascript">
 
 var table;

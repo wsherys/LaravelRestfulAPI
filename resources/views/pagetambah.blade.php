@@ -27,9 +27,12 @@
     <div class="container">
         <br>
         <div class="row">
-            <div class="col col-md-1">&nbsp; 
-                <a href="/"> <input type="button" value="Kembali" class="btn btn-secondary btn-sm"> </a> </div>
-            <div class="col col-md-11">&nbsp;</div>
+            <div class="col col-md-4" style="text-align:left;">&nbsp; 
+            <h2><b>Form Tambah</b></h2>
+            </div>
+            <div class="col col-md-4" style="text-align:right; padding:5px;">&nbsp;
+                <a href="/"> <input type="button" value="Kembali" class="btn btn-secondary btn-sm"> </a> 
+            </div>
         </div>
         <br>
 

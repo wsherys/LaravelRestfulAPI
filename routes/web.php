@@ -21,11 +21,10 @@ Route::get('/', 'App\Http\Controllers\ArtikelPages@PageList');
 Route::get('/ArtikelPages/ListAjax', 'App\Http\Controllers\ArtikelPages@ListAjax')->name('ArtikelPages.ListAjax');
 
 Route::get('/ArtikelPages/PageDetail/{id}', 'App\Http\Controllers\ArtikelPages@PageDetail');
-
 Route::get('/ArtikelPages/PageTambah', 'App\Http\Controllers\ArtikelPages@PageTambah');
+
 Route::post('/ArtikelPages/Tambah', 'App\Http\Controllers\ArtikelPages@Tambah');
+Route::post('/ArtikelPages/Update', 'App\Http\Controllers\ArtikelPages@Update');
 
-Route::get('/ArtikelPages/PageEdit', 'App\Http\Controllers\ArtikelPages@PageEdit');
-Route::get('/ArtikelPages/Update/{id}', 'App\Http\Controllers\ArtikelPages@Update');
-
+Route::get('/ArtikelPages/PageEdit/{id}', 'App\Http\Controllers\ArtikelPages@PageEdit');
 Route::get('/ArtikelPages/Hapus/{id}', 'App\Http\Controllers\ArtikelPages@Hapus');
