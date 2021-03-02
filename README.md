@@ -28,5 +28,5 @@
 3. GET - list article = http://127.0.0.1:8000/api/artikel/
 4. GET by id article = http://127.0.0.1:8000/api/artikel/1
 5. POST - data article = http://127.0.0.1:8000/api/artikel/?author=nama author&text=artikel author
-6. POST by id edit article = http://127.0.0.1:8000/api/artikel/1?author=nama author&text=artikel author
+6. POST by id edit article = http://127.0.0.1:8000/api/artikel/edit/1
 7. DELETE by id article = http://127.0.0.1:8000/api/artikel/1
