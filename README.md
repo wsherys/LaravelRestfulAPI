@@ -25,8 +25,8 @@
 ## Untuk pengetesan Restful API yang digunakan
 1. download postman https://www.postman.com/downloads/
 2. jalankan postman, buat tab baru jalankan sebagai berikut.
-    GET - list article = http://127.0.0.1:8000/api/artikel/
-    GET by id article = http://127.0.0.1:8000/api/artikel/1
-    POST - data article = http://127.0.0.1:8000/api/artikel/?author=nama author&text=artikel author
-    POST by id edit article = http://127.0.0.1:8000/api/artikel/1
-    DELETE by id article = http://127.0.0.1:8000/api/artikel/1
+3. GET - list article = http://127.0.0.1:8000/api/artikel/
+4. GET by id article = http://127.0.0.1:8000/api/artikel/1
+5. POST - data article = http://127.0.0.1:8000/api/artikel/?author=nama author&text=artikel author
+6. POST by id edit article = http://127.0.0.1:8000/api/artikel/1
+7. DELETE by id article = http://127.0.0.1:8000/api/artikel/1
