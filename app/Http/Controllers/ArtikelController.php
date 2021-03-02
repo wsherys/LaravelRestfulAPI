@@ -45,6 +45,7 @@ class ArtikelController extends Controller
     public function edit(Artikel $artikel, $id)
     {
         //
+        return Artikel::find($id);
 
     }
 

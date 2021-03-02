@@ -22,6 +22,7 @@ Route::get('artikel', 'App\Http\Controllers\ArtikelController@index');
 Route::get('/artikel/{id}', 'App\Http\Controllers\ArtikelController@show');
 
 Route::post('artikel','App\Http\Controllers\ArtikelController@create');
+Route::post('/artikel/edit/{id}','App\Http\Controllers\ArtikelController@edit');
 Route::post('/artikel/{id}','App\Http\Controllers\ArtikelController@update');
 
 Route::delete('/artikel/{id}','App\Http\Controllers\ArtikelController@destroy');
