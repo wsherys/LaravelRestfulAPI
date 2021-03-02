@@ -22,5 +22,5 @@
 9. jalankan pada browser firefox atau chrome http://127.0.0.1:8000/
 10. selesai
 
-## Untuk pengetesan Restful API yang saya gunakan
+## Untuk pengetesan Restful API yang digunakan
 1. download postman https://www.postman.com/downloads/
